@@ -1,6 +1,6 @@
 # Mindful Connect - Backend API
 
-![Project Live Link](https://mc-frontend-8848.onrender.com)
+[Project Live Link](https://mc-frontend-8848.onrender.com)
 
 ## Overview
 
