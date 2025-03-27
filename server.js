@@ -13,7 +13,7 @@ connectDB();
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.com'] // Update with your frontend URL when deployed
+    ? ['https://mc-frontend-8848.onrender.com'] // Update with your frontend URL when deployed
     : ['http://localhost:3000']
 }));
 app.use(bodyParser.json());
