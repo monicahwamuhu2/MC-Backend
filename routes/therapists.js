@@ -7,23 +7,77 @@ router.get('/', async (req, res) => {
     try {
         console.log("✅ GET request received! Query params:", req.query);
 
-        let { specialty, location, gender, experience, therapyType, page = 1, limit = 10 } = req.query;
+        let { 
+            specialty, 
+            location, 
+            gender, 
+            experience, 
+            therapyType, 
+            concerns, 
+            insurance, 
+            budget, 
+            culturalPreference, 
+            page = 1, 
+            limit = 10 
+        } = req.query;
+        
         const query = {};
 
-        if (specialty) query.therapySpecialization = { $regex: new RegExp(specialty, "i") };
-        if (location && location.trim() !== "") query["location.city"] = { $regex: new RegExp(location, "i") };
-        if (gender) query.gender = { $regex: new RegExp(gender, "i") };
+        // Improved gender filtering - exact match instead of regex
+        if (gender && gender !== "No Preference") {
+            query.gender = gender;
+            console.log(`🔍 Filtering by gender: ${gender}`);
+        }
+
+        // Therapy specialization
+        if (specialty) {
+            query.therapySpecialization = { $regex: new RegExp(specialty, "i") };
+        }
+
+        // Location filtering
+        if (location && location.trim() !== "") {
+            query["location.city"] = { $regex: new RegExp(location, "i") };
+        }
+
+        // Handle concerns (comma-separated list from frontend)
+        if (concerns) {
+            const concernsList = concerns.split(',').map(c => c.trim());
+            if (concernsList.length > 0) {
+                query.concerns = { $in: concernsList };
+                console.log(`🔍 Filtering by concerns: ${concernsList}`);
+            }
+        }
+
+        // Handle insurance preference
+        if (insurance === "Yes") {
+            query.insuranceAccepted = true;
+            console.log(`🔍 Filtering by insurance: true`);
+        }
+
+        // Handle budget range
+        if (budget) {
+            query.budgetRange = budget;
+            console.log(`🔍 Filtering by budget: ${budget}`);
+        }
+
+        // Handle cultural preference
+        if (culturalPreference && culturalPreference !== "No Preference") {
+            query.culturalSensitivity = culturalPreference;
+            console.log(`🔍 Filtering by cultural preference: ${culturalPreference}`);
+        }
 
         // Normalize sessionModes (convert "Virtual" to "Online")
         if (therapyType) {
             const normalizedTherapyType = therapyType.toLowerCase() === "virtual" ? "Online" : therapyType;
             query.sessionModes = { $regex: new RegExp(normalizedTherapyType, "i") };
+            console.log(`🔍 Filtering by therapy type: ${normalizedTherapyType}`);
         }
 
         // Validate and parse experience
         const parsedExperience = parseInt(experience);
         if (!isNaN(parsedExperience)) {
             query.experience = { $gte: parsedExperience };
+            console.log(`🔍 Filtering by minimum experience: ${parsedExperience}`);
         }
 
         console.log("🔎 Searching with query:", query);

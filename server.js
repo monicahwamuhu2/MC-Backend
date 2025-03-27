@@ -1,3 +1,4 @@
+// In server.js, modify to ensure CORS and port are properly set
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -10,12 +11,21 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
-app.use(bodyParser.json()); // Parses JSON bodies
-app.use(express.json()); // Ensures Express can handle JSON
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-frontend-domain.com'] // Update with your frontend URL when deployed
+    : ['http://localhost:3000']
+}));
+app.use(bodyParser.json());
+app.use(express.json());
 
 // Routes
-app.use('/api/therapists', require('./routes/therapists')); // FIXED ROUTE
+app.use('/api/therapists', require('./routes/therapists'));
+
+// Health check route
+app.get('/', (req, res) => {
+  res.json({ message: 'API running' });
+});
 
 // Start Server
 const PORT = process.env.PORT || 5000;
