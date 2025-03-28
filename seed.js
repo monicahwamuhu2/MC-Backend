@@ -953,6 +953,101 @@ const therapists = [
       email: "faith@example.com",
       phone: "+254756876543"
     }
+  },
+  {
+    name: "Dr. Michael Onyango",
+    age: 38,
+    gender: "Male",
+    maritalStatus: "Married",
+    therapySpecialization: ["CBT", "Trauma Therapy", "Couples Therapy", "Mindfulness Therapy"],
+    experience: 12,
+    experienceLevel: "Expert",
+    sessionModes: ["Online", "In-Person", "Hybrid"],
+    location: {
+      city: "Nairobi",
+      state: "Nairobi County",
+      country: "Kenya"
+    },
+    availability: [
+      {
+        day: "Monday",
+        timeSlots: ["8:00 AM", "10:00 AM", "2:00 PM", "4:00 PM", "6:00 PM"]
+      },
+      {
+        day: "Wednesday",
+        timeSlots: ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM", "5:00 PM"]
+      },
+      {
+        day: "Friday",
+        timeSlots: ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
+      },
+      {
+        day: "Saturday",
+        timeSlots: ["9:00 AM", "11:00 AM", "1:00 PM"]
+      }
+    ],
+    languages: ["English", "Swahili", "French", "Luo"],
+    insuranceAccepted: true,
+    insuranceCoverage: "Full",
+    acceptedInsuranceProviders: ["NHIF", "AAR", "Jubilee", "Britam", "CIC", "Madison"],
+    budgetRange: "Ksh 3,000 - Ksh 5,000",
+    culturalSensitivity: "LGBTQ+ Friendly",
+    concerns: ["Anxiety", "Depression", "Stress", "Relationship Issues"],
+    hourlyRate: 4500,
+    paymentMethods: ["Cash", "Mobile Payment", "Credit Card", "Insurance"],
+    contact: {
+      email: "drmichael@example.com",
+      phone: "+254712345987",
+      website: "www.drmichaelonyango.co.ke"
+    }
+  },
+  // Adding comprehensive female therapist
+  {
+    name: "Dr. Aisha Khalif",
+    age: 42,
+    gender: "Female",
+    maritalStatus: "Single",
+    therapySpecialization: ["CBT", "Trauma Therapy", "Couples Therapy", "Mindfulness Therapy"],
+    experience: 15,
+    experienceLevel: "Expert",
+    sessionModes: ["Online", "In-Person", "Hybrid"],
+    location: {
+      city: "Mombasa",
+      state: "Mombasa County",
+      country: "Kenya"
+    },
+    availability: [
+      {
+        day: "Tuesday",
+        timeSlots: ["8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
+      },
+      {
+        day: "Thursday",
+        timeSlots: ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM", "5:00 PM"]
+      },
+      {
+        day: "Saturday",
+        timeSlots: ["10:00 AM", "12:00 PM", "2:00 PM"]
+      },
+      {
+        day: "Sunday",
+        timeSlots: ["2:00 PM", "4:00 PM", "6:00 PM"]
+      }
+    ],
+    languages: ["English", "Swahili", "Arabic", "German"],
+    insuranceAccepted: true,
+    insuranceCoverage: "Full",
+    acceptedInsuranceProviders: ["NHIF", "AAR", "Jubilee", "Britam", "CIC", "Madison", "Resolution"],
+    budgetRange: "Ksh 3,000 - Ksh 5,000",
+    culturalSensitivity: "LGBTQ+ Friendly",
+    concerns: ["Anxiety", "Depression", "Stress", "Relationship Issues"],
+    hourlyRate: 4800,
+    paymentMethods: ["Cash", "Mobile Payment", "Credit Card", "Insurance"],
+    contact: {
+      email: "draisha@example.com",
+      phone: "+254723456789",
+      website: "www.draishakhalif.co.ke"
+    }
   }
 ];
 
